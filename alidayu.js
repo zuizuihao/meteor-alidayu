@@ -3,13 +3,9 @@ if (!setting) {
   console.log('error', 'Please Add alidayu setting.')
 }
 
-TopClient = require('topsdk').TopClient
+TopClient = require('./topSdk/topClient').TopClient
 
-var client = new TopClient({
-  'appkey': setting.appkey,
-  'appsecret': setting.secret,
-  'REST_URL': 'http://gw.api.taobao.com/router/rest'
-})
+var client = new TopClient(setting)
 
 AliDaYuAPI = {}
 
@@ -17,7 +13,7 @@ AliDaYuAPI.SendTplSMS = function (mobile, sign_name, tpl_id, tpl_value, callback
   client.execute('alibaba.aliqin.fc.sms.num.send', {
     'sms_type': 'normal',
     'sms_free_sign_name': sign_name,
-    'sms_param': tpl_value,
+    'sms_param': JSON.stringify(tpl_value),
     'rec_num': mobile,
     'sms_template_code': tpl_id
   }, function (error, response) {

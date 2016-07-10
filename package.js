@@ -11,14 +11,13 @@ Package.describe({
 })
 
 Npm.depends({
-  'topsdk': '1.0.5'
+  'urllib': '2.11.0'
 })
 
 Package.onUse(function (api) {
   api.versionsFrom('1.3.2.4')
   api.use('ecmascript')
-  api.mainModule('alidayu.js')
-  api.export('AliDaYuAPI')
+  api.export('AliDaYuAPI', 'server')
   api.addFiles('alidayu.js', 'server')
 })
 
