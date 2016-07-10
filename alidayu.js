@@ -16,8 +16,5 @@ AliDaYuAPI.SendTplSMS = function (mobile, sign_name, tpl_id, tpl_value, callback
     'sms_param': JSON.stringify(tpl_value),
     'rec_num': mobile,
     'sms_template_code': tpl_id
-  }, function (error, response) {
-    if (!error) console.log(response)
-    else console.log(error)
-  })
+  }, callback)
 }
